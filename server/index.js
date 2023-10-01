@@ -3,12 +3,18 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 
+import postRouter from "./routes/posts.js";
+
+
 
 const app = express();
 
 app.use(bodyParser.json({limit: '30mb', extended: true})) // Limit for sending imgs
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}))
 app.use(cors()) // for cross origin requests to anotherbrowser url
+
+
+app.use("/posts", postRouter) // added posts prefix to all routes in postRouter
 
 const CONNECTION_URL = "mongodb+srv://guraba_01:guraba123@clustermemories.z0mwcgf.mongodb.net/?retryWrites=true&w=majority"; // from mongoDB atlas
 const PORT = process.env.PORT || 5000;
