@@ -5,8 +5,18 @@ import Form from './components/Form/Form';
 
 import useStyles from './AppStyle';
 
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getPostsThunkCreator } from './Redux/post-reducer';
+
 function App() {
   const {classes} = useStyles();
+  const dispatch = useDispatch()
+
+  useEffect( () =>{
+    dispatch(getPostsThunkCreator)
+  }, [dispatch] )
+
   return (
     <Container maxWidth='lg'>
       <AppBar className={classes.appBar} position='static' color='inherit'>
