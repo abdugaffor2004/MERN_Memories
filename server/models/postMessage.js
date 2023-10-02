@@ -9,7 +9,7 @@ const postSchema = mongoose.Schema({
 
     likeCount:{
         type: Number,
-        default: 0
+        default: 0 // additional info
     },
 
     createdAt: {
