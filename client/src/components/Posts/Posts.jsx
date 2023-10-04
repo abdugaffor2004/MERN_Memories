@@ -7,7 +7,6 @@ import useStyles from "./PostsStyle"
 const Posts = () =>{
     const {classes} = useStyles();
     const posts = useSelector((state) => state.post) // is brother of connect() for extracting data from state
-    console.log(posts)
     return(
         <>
             <h1> Posts </h1>
