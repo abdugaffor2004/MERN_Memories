@@ -14,8 +14,6 @@ const postReducer = (state = intialState, action) =>{
                 posts: [...state.posts, action.posts]
             }
 
-        case 'CREATE': 
-            return state.posts
 
         default:
             return state
@@ -31,4 +29,8 @@ export const setPostsAC = (posts) =>{
 
 export const getPostsThunkCreator = () => (dispatch) =>{
     postsApi.getPosts().then( (response) => dispatch(setPostsAC(response)) )
+}
+
+export const createPostThunkCreator = (formData) => (dispatch) =>{
+    postsApi.createPost(formData).then( (response) => dispatch(setPostsAC(response)) )
 }

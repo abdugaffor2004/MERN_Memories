@@ -2,17 +2,22 @@ import { Button, Paper, TextField, Typography } from '@mui/material';
 import FileBase from "react-file-base64"
 import  useStyles  from './FormStyle'
 import { useState } from 'react';
+import {useDispatch} from 'react-redux'
+import { createPostThunkCreator } from '../../Redux/post-reducer';
 
 const Form = () =>{
     const {classes} = useStyles();
     const [FormData, setFormData] = useState({creator:"", title:"", message:"", tags:"", selectedFile:""});
+    const dispatch = useDispatch()
 
-    const handleSubmit = () =>{
+    const handleSubmit = (e) =>{
+        e.preventDefault()
 
+        dispatch(createPostThunkCreator(FormData))
     }
 
     const clear = () =>{
-
+        
     }
 
     return(

@@ -12,11 +12,12 @@ export const getPosts = async (req, res) =>{
     }
 }
 
-export const createPost = (req, res) =>{
+export const createPost = async(req, res) =>{
     const reqBody = req.body; // extracting info from request body that came from frontend
     const newPost = new postMessage(reqBody) // creating new post using schema
 
     try {
+        await newPost.save()
         res.status(201).json(newPost)
     } 
     catch (error) {
