@@ -19,7 +19,7 @@ const Post = (props) =>{
             </div>
 
             <div className={classes.overlay2}>
-                <Button style={{color:"white"}} size="small" onClick={() =>{}}> <MoreHorizIcon  /> </Button>
+                <Button style={{color:"white"}} size="small" onClick={() =>{ props.setEditingPostId(props.id)}}> <MoreHorizIcon  /> </Button>
             </div>
 
             <div className={classes.details}>

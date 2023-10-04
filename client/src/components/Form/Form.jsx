@@ -1,29 +1,47 @@
 import { Button, Paper, TextField, Typography } from '@mui/material';
 import FileBase from "react-file-base64"
 import  useStyles  from './FormStyle'
-import { useState } from 'react';
-import {useDispatch} from 'react-redux'
-import { createPostThunkCreator } from '../../Redux/post-reducer';
+import { useEffect, useState } from 'react';
+import {useDispatch, useSelector} from 'react-redux'
+import { createPostThunkCreator, updatedPostThunkCreator } from '../../Redux/post-reducer';
 
-const Form = () =>{
+const Form = (props) =>{
     const {classes} = useStyles();
     const [FormData, setFormData] = useState({creator:"", title:"", message:"", tags:"", selectedFile:""});
+    const updatedPost = useSelector( (state) => props.editingPostId ? state.postReducer.posts.find( (item) => item._id === props.editingPostId ) : null )
     const dispatch = useDispatch()
+
+    useEffect( () =>{
+        if(updatedPost){
+            setFormData(updatedPost)
+        }
+    }, [updatedPost] )
 
     const handleSubmit = (e) =>{
         e.preventDefault()
 
-        dispatch(createPostThunkCreator(FormData))
+        if(props.editingPostId){
+            dispatch(updatedPostThunkCreator(props.editingPostId, FormData))
+        }
+
+        else{
+            dispatch(createPostThunkCreator(FormData))
+        }
+
+        clear()
+
+        
     }
 
     const clear = () =>{
-        
+        setFormData({creator:"", title:"", message:"", tags:"", selectedFile:""})
+        props.setEditingPostId(null)
     }
 
     return(
         <Paper className={classes.paper}>
             <form onSubmit={handleSubmit} autoComplete='off' noValidate className={`${classes.form} ${classes.root}`} >
-                <Typography variant='h6'> Creating Memory </Typography>
+                <Typography variant='h6'> {props.editingPostId ? `Update` : `Create` } Memory  </Typography>
 
                 <TextField name='creator' variant='outlined' label="Creator" 
                     fullWidth 

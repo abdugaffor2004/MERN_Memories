@@ -3,7 +3,7 @@ import thunkMiddleware from "redux-thunk";
 import postReducer from "./post-reducer";
 
 let reducers = combineReducers({
-    post: postReducer
+    postReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

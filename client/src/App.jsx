@@ -6,12 +6,13 @@ import Form from './components/Form/Form';
 import useStyles from './AppStyle';
 
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getPostsThunkCreator } from './Redux/post-reducer';
 
 function App() {
   const {classes} = useStyles();
   const dispatch = useDispatch()
+  const [editingPostId, setEditingPostId] = useState();
 
   useEffect( () =>{
     dispatch(getPostsThunkCreator())
@@ -29,11 +30,11 @@ function App() {
           <Grid container justifyContent={'space-between'} alignItems={'stretch'} spacing={3}>
 
             <Grid item xs={12} sm={7}>
-              <Posts />
+              <Posts setEditingPostId={setEditingPostId}/>
             </Grid>
 
             <Grid item xs={12} sm={4}>
-              <Form />
+              <Form editingPostId={editingPostId} setEditingPostId={setEditingPostId}/>
             </Grid>
 
           </Grid>
