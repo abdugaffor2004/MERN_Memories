@@ -1,13 +1,9 @@
 import axios from "axios";
 
-export const instance = axios.create({
-    baseURL: 'http://localhost:5000/',
-})
+
 
 export let postsApi = {
-    getPosts: () =>{
-        return instance.get(`posts`).then( (response) => response.data )
-    },
+    getPosts: () => axios.get(`http://localhost:5000/posts`).then( (response) =>  response.data ),
 
-    createPost: (formData) => instance.post(`posts`, formData).then( (response) => response.data )
+    createPost: (formData) => axios.post(`http://localhost:5000/posts`, formData).then( (response) => response.data )
 }

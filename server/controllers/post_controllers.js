@@ -6,6 +6,7 @@ export const getPosts = async (req, res) =>{
         const postsDB = await postMessage.find() // finding posts in DB
 
         res.status(200).json(postsDB)
+        console.log(postsDB)
     } 
     catch (error) {
         res.status(404).json({message: error.message})
