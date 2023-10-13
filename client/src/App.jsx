@@ -1,4 +1,4 @@
-import './App.css';
+
 import {AppBar, Container, Typography, Grow, Grid} from '@mui/material'
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
@@ -29,12 +29,12 @@ function App() {
         <Container>
           <Grid container justifyContent={'space-between'} alignItems={'stretch'} spacing={3}>
 
-            <Grid item xs={12} sm={7}>
+            <Grid item xs={12} sm={8}>
               <Posts setEditingPostId={setEditingPostId}/>
             </Grid>
 
             <Grid item xs={12} sm={4}>
-              <Form editingPostId={editingPostId} setEditingPostId={setEditingPostId}/>
+              <Form className={classes.form} editingPostId={editingPostId} setEditingPostId={setEditingPostId}/>
             </Grid>
 
           </Grid>

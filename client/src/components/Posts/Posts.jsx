@@ -16,10 +16,10 @@ const Posts = (props) =>{
             {
 
             posts.length === 0 ? <CircularProgress style={{ position:"relative", top: '30%', left: "50%"}}/> : (
-                <Grid container marginTop={3} className={classes.mainContainer}  alignItems="stretch" gap={3}>
+                <Grid gap={3} container marginTop={3} className={classes.mainContainer}  alignItems="flex-start" >
                     {
                         posts.map( (item) => 
-                        <Grid item key={item._id} xs={12} sm={6} > 
+                        <Grid item key={item._id}  > 
                             <Post id={item._id}
                                   creator={item.creator}
                                   title={item.title}

@@ -17,6 +17,11 @@ export default makeStyles()( () => ({
     image:{
         marginLeft: '15px',
         
+    },
+
+    form:{
+        position: 'sticky',
+        top: 0,
     }
 
 }))

@@ -57,7 +57,9 @@ export const getPostsThunkCreator = () => (dispatch) =>{
 }
 
 export const createPostThunkCreator = (formData) => (dispatch) =>{
+    
     postsApi.createPost(formData).then( (response) => dispatch(setPostsAC(response)) )
+    
 }
 
 

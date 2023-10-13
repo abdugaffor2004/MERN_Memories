@@ -27,7 +27,7 @@ const Post = (props) =>{
             </div>
 
             <CardContent>
-                <Typography className={classes.title} variant="h5" gutterBottom>{props.message}</Typography>
+                <Typography className={classes.message} variant="p" gutterBottom>{props.message}</Typography>
             </CardContent>
 
             <CardActions className={classes.cardActions}>

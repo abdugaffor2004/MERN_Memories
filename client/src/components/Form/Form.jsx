@@ -8,14 +8,14 @@ import { createPostThunkCreator, updatedPostThunkCreator } from '../../Redux/pos
 const Form = (props) =>{
     const {classes} = useStyles();
     const [FormData, setFormData] = useState({creator:"", title:"", message:"", tags:"", selectedFile:""});
-    const updatedPost = useSelector( (state) => props.editingPostId ? state.postReducer.posts.find( (item) => item._id === props.editingPostId ) : null )
+    const postDataForUpdate = useSelector( (state) => props.editingPostId ? state.postReducer.posts.find( (item) => item._id === props.editingPostId ) : null )
     const dispatch = useDispatch()
 
     useEffect( () =>{
-        if(updatedPost){
-            setFormData(updatedPost)
+        if(postDataForUpdate){
+            setFormData(postDataForUpdate)
         }
-    }, [updatedPost] )
+    }, [postDataForUpdate] )
 
     const handleSubmit = (e) =>{
         e.preventDefault()
