@@ -8,7 +8,6 @@ import { CircularProgress, Grid } from "@mui/material";
 const Posts = (props) =>{
     const {classes} = useStyles();
     const {posts} = useSelector((state) => state.postReducer) // is brother of connect() for extracting data from state
-    console.log(posts)
     return(
         <>
             <h1 style={{color: "white"}}> Posts </h1>
@@ -29,7 +28,7 @@ const Posts = (props) =>{
                                   tags={item.tags}
                                   createdAt={item.createdAt}
                                   setEditingPostId={props.setEditingPostId}
-                                  /> 
+                            /> 
                                   
                         </Grid>  )
                     }
