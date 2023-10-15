@@ -18,7 +18,7 @@ const Posts = (props) =>{
                 <Grid gap={3} container marginTop={3} className={classes.mainContainer}  alignItems="flex-start" >
                     {
                         posts.map( (item) => 
-                        <Grid item key={item._id}  > 
+                        <Grid item key={item._id}> 
                             <Post id={item._id}
                                   creator={item.creator}
                                   title={item.title}

@@ -1,6 +1,6 @@
 import { makeStyles } from 'tss-react/mui'
 
-export default makeStyles()( () => ({
+export default makeStyles()( (theme) => ({
     appBar:{
         borderRadius: 10,
         margin: '30px 0', 
@@ -22,6 +22,14 @@ export default makeStyles()( () => ({
     form:{
         position: 'sticky',
         top: 0,
+    },
+
+    mainContainer:{
+        [theme.breakpoints.down('sm')]:{
+            flexDirection: "column-reverse"
+        }
+        
     }
 
+    
 }))
