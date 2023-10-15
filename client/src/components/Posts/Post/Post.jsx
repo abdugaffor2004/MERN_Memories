@@ -29,12 +29,14 @@ const Post = (props) =>{
                 <Typography variant="body2" color='textSecondary'>{props.tags.map( (item) => `# ${item} `)}</Typography>
             </div>
 
+            <Typography className={classes.title} variant="h5" > {props.title} </Typography>
+
             <CardContent>
-                <Typography className={classes.message} variant="p" gutterBottom>{props.message}</Typography>
+                <Typography variant="body2" color='textSecondary' className={classes.message} component="p" >{props.message}</Typography>
             </CardContent>
 
             <CardActions className={classes.cardActions}>
-                <Button size="small" color="primary" onClick={()=>{ dispatch(likePostThunkCreator(props.id)) }}> <ThumbUpAltIcon fontSize="small" /> Like {props.likeCount} </Button>
+                <Button size="small" color="primary" onClick={()=>{ dispatch(likePostThunkCreator(props.id)) }}> <ThumbUpAltIcon fontSize="small" /> &nbsp; Like {props.likeCount} </Button>
                 <Button size="small" color="primary" onClick={ () => dispatch(deletePostThunkCreator(props.id))}> <DeleteIcon /> Delete</Button>
             </CardActions>
 

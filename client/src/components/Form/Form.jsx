@@ -61,7 +61,7 @@ const Form = (props) =>{
                 <TextField name='tags' variant='outlined' label="Tags"
                     fullWidth
                     value={FormData.tags}
-                    onChange={ (e) => setFormData({...FormData, tags: e.target.value}) }/>   
+                    onChange={ (e) => setFormData({...FormData, tags: e.target.value.split(',')}) }/>   
 
                 <div className={classes.fileInput}>
                     <FileBase
