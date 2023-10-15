@@ -7,7 +7,6 @@ export const getPosts = async (req, res) =>{
         const postsDB = await postMessage.find() // finding posts in DB
 
         res.status(200).json(postsDB)
-        console.log(postsDB)
     } 
     catch (error) {
         res.status(404).json({message: error.message})
@@ -64,5 +63,26 @@ export const deletePost = async(req, res) =>{
         
     } catch (error) {
         res.status(500).json({message: error.message})
+    }
+}
+
+export const likePost = async(req, res) =>{
+    try {
+        const { id: _id} = req.params
+
+        if(!mongoose.Types.ObjectId.isValid(_id)){
+            return res.status(404).send("no post with this id")
+        }
+        else{
+            const post = await postMessage.findById(_id)
+            const updatedPost = await postMessage.findByIdAndUpdate(_id, {likeCount: post.likeCount + 1}, {new: true});
+
+            console.log(post)
+            res.json(updatedPost);
+        }
+    } 
+    
+    catch (error) {
+        res.status(404).json({message: error.message})
     }
 }

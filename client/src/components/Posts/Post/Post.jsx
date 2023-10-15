@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'; // marerial-ui icons
 
 import moment from 'moment'; // from libriary to fetch the current time
-import { deletePostThunkCreator } from "../../../Redux/post-reducer";
+import { deletePostThunkCreator, likePostThunkCreator } from "../../../Redux/post-reducer";
 import { useDispatch } from "react-redux";
 
 const Post = (props) =>{
@@ -34,7 +34,7 @@ const Post = (props) =>{
             </CardContent>
 
             <CardActions className={classes.cardActions}>
-                <Button size="small" color="primary" onClick={()=>{}}> <ThumbUpAltIcon fontSize="small" /> Like {props.likeCount} </Button>
+                <Button size="small" color="primary" onClick={()=>{ dispatch(likePostThunkCreator(props.id)) }}> <ThumbUpAltIcon fontSize="small" /> Like {props.likeCount} </Button>
                 <Button size="small" color="primary" onClick={ () => dispatch(deletePostThunkCreator(props.id))}> <DeleteIcon /> Delete</Button>
             </CardActions>
 

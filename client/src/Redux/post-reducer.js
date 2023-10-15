@@ -30,8 +30,7 @@ const postReducer = (state = intialState, action) =>{
             return {
                 ...state,
                 posts: state.posts.map( (post) => post._id === action.updatedPost._id ? action.updatedPost : state.posts )
-                
-        }
+            }
 
         case DELETE_POST:
             return {
@@ -85,4 +84,8 @@ export const deletePostThunkCreator = (id) => async (dispatch) =>{
             dispatch(deletePostAC(id))
         }
     })
+}
+
+export const likePostThunkCreator = (id) => async (dispatch) =>{
+    postsApi.likePost(id).then( (response) => dispatch( updatePostAC(response) ) )
 }
